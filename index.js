@@ -23,6 +23,7 @@ const tmpDbPath = '/tmp/database.sqlite';
 
 if (!fs.existsSync(tmpDbPath)) {
   fs.copyFileSync(dbFilePath, tmpDbPath);
+  console.log(dbFilePath);
 }
 
 // Then open the database connection using the /tmp path
