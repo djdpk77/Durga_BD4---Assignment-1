@@ -11,6 +11,9 @@ let { open } = require('sqlite');
 app.use(cors());
 app.use(express.json());
 
+const fs = require('fs');
+const path = require('path');
+
 //app.use(express.static('static'));
 
 let db;
