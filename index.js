@@ -15,15 +15,19 @@ app.use(express.json());
 
 let db;
 
+const dbFilePath = path.resolve(__dirname, 'database.sqlite');
+const tmpDbPath = '/tmp/database.sqlite';
+
+if (!fs.existsSync(tmpDbPath)) {
+  fs.copyFileSync(dbFilePath, tmpDbPath);
+}
+
+// Then open the database connection using the /tmp path
 (async () => {
-  try {
-    db = await open({
-      filename: './database.sqlite',
-      driver: sqlite3.Database,
-    });
-  } catch (error) {
-    console.error("Failed to open the database:", error);
-  }
+  db = await open({
+    filename: tmpDbPath,
+    driver: sqlite3.Database,
+  });
 })();
 
 //Function to fetch all restaurants from the database
