@@ -18,7 +18,7 @@ let db;
 (async () => {
   try {
     db = await open({
-      filename: '/tmp/database.sqlite',
+      filename: './database.sqlite',
       driver: sqlite3.Database,
     });
   } catch (error) {
