@@ -44,7 +44,6 @@ async function fetchAllRestaurants() {
 //Endpoint 1: Get All Restaurants
 app.get('/restaurants', async (req, res) => {
   try {
-    console.log(dbFilePath);
     let results = await fetchAllRestaurants();
 
     if (results.restaurants.length === 0) {
