@@ -16,10 +16,14 @@ app.use(express.json());
 let db;
 
 (async () => {
-  db = await open({
-    filename: './database.sqlite',
-    driver: sqlite3.Database,
-  });
+  try {
+    db = await open({
+      filename: '/tmp/database.sqlite',
+      driver: sqlite3.Database,
+    });
+  } catch (error) {
+    console.error("Failed to open the database:", error);
+  }
 })();
 
 //Function to fetch all restaurants from the database
